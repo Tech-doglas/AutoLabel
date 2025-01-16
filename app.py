@@ -100,6 +100,17 @@ def generate_image():
     with open(file_path, 'r', encoding='utf-8') as file:
         content = file.read()
 
+    splittext = content.splitlines()
+
+    for line in splittext:
+        if re.search(r'\b(SSD|Storage)\b', line, re.IGNORECASE):
+            if brand in ["msi", "dell"]:
+                line = re.sub(r"(\d+(?:GB|TB) SSD)", lambda m: f"{selected_ssd} SSD", line, flags=re.IGNORECASE)
+                print(line)
+        if re.search(r'\b(Ram|Memory)\b', line, re.IGNORECASE):
+            print(line)
+    
+
     SSD_result = find_keyword(content.lower(), SSD_keywords)
     # 1 = "SSD.:" , 2 = "storage:", 3 = "ssd:"
     if SSD_result == 1:
@@ -113,9 +124,6 @@ def generate_image():
         content = re.sub(r"(\d+(?:GB|TB) SSD)", selected_ssd, content, flags=re.IGNORECASE)
     
     RAM_result = find_keyword(content.lower(), RAM_keywords)
-
-    tttefsd = content.splitlines()
-    print(tttefsd)
 
     # 1 = "ram:" , 2 = "memory:"
     if brand == "asus":
