@@ -1,0 +1,8 @@
+OS: Windows 11 Home in S mode
+Processor: Intel Core i3-N305
+LCD: 15.6" FHD IPS SlimBezel
+Graphics: Intel UHD Graphics
+Memory: 8GB LPDDR5 Memory
+Storage: 1TB PCle NVMe SSD
+Optical Drive: NA
+WLAN/ Bluetooth: WIFI6+BT

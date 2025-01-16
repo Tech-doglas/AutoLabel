@@ -1,0 +1,8 @@
+CPU: Intel Core i9-14900HX
+RAM: 32GB
+Storage: 2TB SSD
+GPU: RTX4080
+Display: 16.0" WQXGA
+Battery: 4CELL
+OS: Windows 11 Pro
+

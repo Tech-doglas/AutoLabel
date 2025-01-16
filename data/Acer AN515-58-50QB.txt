@@ -1,0 +1,10 @@
+OS: Windows 11 Home
+Processor: Inter Core i5-12450H
+LCD: 15.6" FHD IPS 144Hz SimBezel
+Graphics: NVIDA GeForce RTX 3050 with 4GB
+                GDDR6 Dedicated VRAM
+Memory: 16GB DDR4 Memory
+Storage: 1TB PCle NVMe SSD
+Optical Drive: NA
+WLAN/ Bluetooth: 2x2 AX+BT
+WWAN: NA

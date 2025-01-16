@@ -1,0 +1,10 @@
+OS: Windows 11 Home
+Processor: Intel® Core™ i7-13620H
+LCD: 15.6" FHD IPS 144Hz SimBezel
+Graphics: NVIDA GeForce RTX 4060 with 8GB
+                GDDR6 Dedicated VRAM
+Memory: 32GB DDR5 Memory
+Storage: 1TB PCle NVMe SSD
+Optical Drive: NA
+WLAN/ Bluetooth: 2x2 AX+BT
+WWAN: NA

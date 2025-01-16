@@ -1,0 +1,8 @@
+CPU: Intel N4020 1.1GHz
+Ram: 4GB
+Storage: 1TB SSD
+GPU: Integrated
+Display: 14.0" HD
+Battery: 3CELL
+OS: Windows 11 Home in S mode
+

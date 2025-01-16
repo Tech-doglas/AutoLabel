@@ -1,0 +1,9 @@
+OS: Windows 11 Home
+Processor: Intel® Core™ i5-13420H
+LCD: 15.6" FHD IPS 144Hz SlimBezel
+Graphics: NVIDIA® GeForce RTX™ 2050 with 4GB DDR6
+Memory: 16GB DDR4 Memory
+Storage: 512GB PCle NVMe SSD
+Optical Drive: NA
+WLAN/ Bluetooth: 2x2 AX+BT
+WWAN: NA

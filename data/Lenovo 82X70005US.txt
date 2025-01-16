@@ -1,0 +1,7 @@
+CPU: Intel i3-1315U 1.2GHz
+Ram: 8GB
+Storage: 1TB SSD
+GPU: Integrated
+Display: 15.6" HD
+Battery: 3CELL
+OS: Windows 11 Home

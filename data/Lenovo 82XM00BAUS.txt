@@ -1,0 +1,8 @@
+CPU: AMD Ryzen 7 7730U 2.0GHz
+Ram: 16GB
+Storage: 1TB SSD
+GPU: INTEGRATED
+Display: 15.6" FHD TS
+Battery: 3CELL
+OS: Windows 11 Home
+

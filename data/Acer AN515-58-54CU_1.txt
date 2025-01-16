@@ -1,0 +1,10 @@
+OS: Windows 11 Home
+Processor: Intel® Core™ i5-12450H
+LCD: 15.6" FHD IPS 144Hz SlimBezel
+Graphics: NVIDIA® GeForce RTX™ 3050 with 
+4GB GDDR6 Dedicated VRAM
+Memory: 32GB DDR4 3200MHz Memory
+Storage: 1TB PCle NVMe SED SSD
+Optical Drive: NA
+WLAN/ Bluetooth: 802.11 AX+BT
+WWAN: NA

@@ -1,0 +1,10 @@
+CPU: Intel i7-1255U 1.7GHz
+Ram: 40GB
+Storage: 1TB SSD
+GPU: INTERGRATED
+Display: 15.6" FHD TS
+Battery: 3CELL
+OS: Windows 11 Home
+
+
+

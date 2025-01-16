@@ -1,0 +1,8 @@
+CPU: Intel i5-1155G7 2.5GHz
+Ram: 12GB
+Storage: 512GB SSD
+GPU: Integrated
+Display: 15.6" FHD TS
+Battery: 3CELL
+OS: Windows 11 Home in S mode
+

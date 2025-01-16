@@ -1,0 +1,8 @@
+CPU: AMD RYZEN 5 764HS 4.3G
+Storage: 512GB SSD
+Ram: 16GB
+GPU: RTX4050
+Display: 16.0" WUXGA
+Battery: 4CELL
+OS: Windows 11 Home
+

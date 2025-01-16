@@ -1,0 +1,8 @@
+CPU: IAMD RYZEN 7 8845HS
+RAM: 1TB
+Storage: 32GB SSD
+GPU: RTX4070
+Display: 16.0" WQXGA
+Battery: 4CELL
+OS: Windows 11 Home
+

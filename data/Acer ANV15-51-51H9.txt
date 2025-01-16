@@ -1,0 +1,10 @@
+OS: Windows 11 Home
+Processor: Inter Core i5-13420H
+LCD: 15.6" FHD IPS 144Hz SimBezel
+Graphics: NVIDA GeForce RTX 4050 with 6GB
+                GDDR6 Dedicated VRAM
+Memory: 16GB DDR5 Memory
+Storage: 512GB PCle NVMe SSD
+Optical Drive: NA
+WLAN/ Bluetooth: 2x2 AX+BT
+WWAN: NA

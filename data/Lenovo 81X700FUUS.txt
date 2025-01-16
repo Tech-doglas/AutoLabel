@@ -1,0 +1,8 @@
+CPU: Intel i3-1115G4 3.0GHz
+Ram: 8GB
+Storage: 1TB SSD
+GPU: Integrated
+Display: 14.0" FHD
+Battery: 2CELL
+OS: Windows 11 Home in S mode
+

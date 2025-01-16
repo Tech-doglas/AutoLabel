@@ -1,0 +1,8 @@
+CPU: Intel i3-N305 1.8GHz
+Ram: 8GB
+Storage: 1TB SSD
+GPU: INTEGRATED
+Display: 15.6" FHD 
+Battery: 3CELL
+OS: Windows 11 Home in S mode
+
