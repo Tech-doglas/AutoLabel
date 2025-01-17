@@ -70,7 +70,9 @@
 <body>
     <div class="content">
         <div id="image-container">
-            <img src="{{ image_url }}" alt="Generated Image" />
+            {% for image_url in image_urls %}
+                <img src="{{ image_url }}" alt="Generated Image {{ loop.index }}" />
+            {% endfor %}
         </div>
         <button id="print-button" onclick="window.print()">Print Image</button>
     </div>

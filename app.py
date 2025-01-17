@@ -17,7 +17,7 @@ IMAGE_CONFIGS = {
         'width': 1100,
         'height': 480,
         'dpi': 600,
-        'font_size': 7
+        'font_size': 6
     },
     'dell': {
         'width': 1100,
@@ -36,42 +36,27 @@ SSD_value = [
 ]
 
 RAM_value = [
-    "64GB",
-    "8GB",
     "4GB",
-    "48GB",
-    "40GB",
-    "36GB",
-    "32GB",
-    "24GB",
-    "20GB",
-    "16GB",
+    "8GB",
     "12GB",
+    "16GB",
+    "20GB",
+    "24GB",
+    "32GB",
+    "36GB",
+    "40GB",
+    "48GB",
+    "64GB",
 ]
-
-SSD_keywords = {
-    "ssd.:": 1,
-    "storage:": 2,
-    "ssd:": 3
-}
-
-RAM_keywords = {
-    "ram:": 1,
-    "memory:": 2
-}
-
-def find_keyword(sentence, keywords):
-    for keyword, value in keywords.items():
-        if keyword in sentence:
-            return value
-    return 0  # Return 0 if none of the keywords are found
 
 @app.route('/')
 def index():
     ssd_values = SSD_value  # SSD options
     ram_values = RAM_value  # RAM options
     text_files = [f for f in os.listdir(DATA_FOLDER) if f.endswith('.txt')]
-    return render_template('index.html', ssd_values=ssd_values, ram_values=ram_values, text_files=text_files)
+    merged_names = list(set(re.sub(r'(_\d+)', '', name) for name in text_files))
+    merged_names.sort()
+    return render_template('index.html', ssd_values=ssd_values, ram_values=ram_values, text_files=merged_names)
 
 
 @app.route('/generate-image', methods=['POST'])
@@ -80,106 +65,87 @@ def generate_image():
     selected_ssd = request.form.get('ssd')
     selected_ram = request.form.get('ram')
 
-    brand = selected_text_files.split()
+    base_name = re.sub(r'(_\d+)?\.txt$', '', selected_text_files)  # Remove suffix like _1 or _2
+    related_files = [
+        f for f in os.listdir(DATA_FOLDER)
+        if re.match(rf'{re.escape(base_name)}(_\d+)?\.txt$', f)
+    ]
 
-    brand = brand[0].lower()
+    if not related_files:
+        return "No related files found", 404
 
-    formatConfigs = brand
+    # Create an image for each related file
+    image_urls = []  # Store URLs of generated images
+    for idx, file_name in enumerate(related_files, start=1):
+        file_path = os.path.join(DATA_FOLDER, file_name)
+        if not os.path.exists(file_path):
+            continue
 
-    if formatConfigs != "dell":
-        formatConfigs = "default"
-    else:
-        formatConfigs = "dell"
+        # Read content of the file
+        with open(file_path, 'r', encoding='utf-8') as file:
+            content = file.read()
 
-    config = IMAGE_CONFIGS[formatConfigs]
-    file_path = os.path.join(DATA_FOLDER, selected_text_files)
-    if not os.path.exists(file_path):
-        return "File not found", 404
+        # Determine brand and configuration
+        brand = selected_text_files.split()[0].lower()
+        formatConfigs = brand if brand == "dell" else "default"
+        config = IMAGE_CONFIGS[formatConfigs]
 
-    # Read text from the file
-    with open(file_path, 'r', encoding='utf-8') as file:
-        content = file.read()
+        # Create an image in memory
+        image = Image.new("RGB", (config['width'], config['height']), "white")
+        draw = ImageDraw.Draw(image)
 
-    splittext = content.splitlines()
+        # Load fonts
+        try:
+            bold_font = ImageFont.truetype("arialbd.ttf", math.floor(config['font_size'] * (config['dpi'] // 108)))
+            regular_font = ImageFont.truetype("arial.ttf", math.floor(config['font_size'] * (config['dpi'] // 108)))
+        except IOError:
+            bold_font = regular_font = ImageFont.load_default()
 
-    for line in splittext:
-        if re.search(r'\b(SSD|Storage)\b', line, re.IGNORECASE):
-            if brand in ["msi", "dell"]:
-                line = re.sub(r"(\d+(?:GB|TB) SSD)", lambda m: f"{selected_ssd} SSD", line, flags=re.IGNORECASE)
-                print(line)
-        if re.search(r'\b(Ram|Memory)\b', line, re.IGNORECASE):
-            print(line)
-    
+        # Draw content onto the image
+        lines = content.splitlines()
+        x, y = 30, 30
+        line_spacing = 10
 
-    SSD_result = find_keyword(content.lower(), SSD_keywords)
-    # 1 = "SSD.:" , 2 = "storage:", 3 = "ssd:"
-    if SSD_result == 1:
-        content = re.sub(r"(SSD.:\s*)(\S+)", lambda m: m.group(1) + selected_ssd, content, flags=re.IGNORECASE)
-    elif SSD_result == 2:
-        content = re.sub(r"(Storage:\s*)(\S+)", lambda m: m.group(1) + selected_ssd, content, flags=re.IGNORECASE)
-    elif SSD_result == 3:
-        content = re.sub(r"(SSD:\s*)(\S+)", lambda m: m.group(1) + selected_ssd, content, flags=re.IGNORECASE)
-    elif SSD_result == 0:
-        # Replace storage with "GB" or "TB" and SSD
-        content = re.sub(r"(\d+(?:GB|TB) SSD)", selected_ssd, content, flags=re.IGNORECASE)
-    
-    RAM_result = find_keyword(content.lower(), RAM_keywords)
+        for line in lines:
+            # Bold and larger for specific headings
+            font = bold_font if line.strip() in ["Performance", "Software"] else regular_font
 
-    # 1 = "ram:" , 2 = "memory:"
-    if brand == "asus":
-        print("yes")
-    elif brand == "msi":
-        content = re.sub(r"(DDR[45]) \d+GB(?:\(\d+GB\*\d+\))?",  lambda m: f"{selected_ram} RAM", content, flags=re.IGNORECASE)
-    else:
-        if RAM_result == 1: #Lenovo
-            # Replace RAM format: "Ram: 16GB DDR4" -> "Ram: <selected_ram>"
-            content = re.sub(r"(Ram:\s*\d+GB)\s*.*", lambda m: f"Ram: {selected_ram}", content, flags=re.IGNORECASE)
-        elif RAM_result == 2:
-            # Replace Memory format: "Memory: 32GB DDR5" -> "Memory: <selected_ram>"
-            content = re.sub(r"(Memory:\s*\d+GB)\s*.*", lambda m: f"Memory: {selected_ram}", content, flags=re.IGNORECASE)
-        elif RAM_result == 0:
-            content = re.sub(r"\d+GB Memory",  lambda m: f"{selected_ram} Memory", content, flags=re.IGNORECASE)
+            if re.search(r'\b(SSD|Storage|STORAGE)\b', line, re.IGNORECASE):
+                    if brand in ["msi", "dell"]:
+                        line = re.sub(r"(\d+(?:GB|TB) SSD)", lambda m: f"{selected_ssd} SSD", line, flags=re.IGNORECASE)
+                    elif brand in ["acer", "lenovo"]:
+                        line = "Storage: " + selected_ssd
+                    else:
+                        if re.search(r'\b(SSD)\b', line, re.IGNORECASE):
+                            line = re.sub(r"(SSD.:\s*)(\S+)", lambda m: m.group(1) + selected_ssd, line, flags=re.IGNORECASE)
+                        else:
+                            line = re.sub(r"(STORAGE:\s*)(\S+)", lambda m: m.group(1) + selected_ssd, line, flags=re.IGNORECASE)
+            if re.search(r'\b(Memory|Ram)\b', line, re.IGNORECASE):
+                    if brand == "lenovo":
+                        line = "RAM: " + selected_ram
+                    elif brand == "asus":
+                        line = "• RAM: " + selected_ram
+                    elif brand == "acer":
+                        line = re.sub(r"(Memory:\s*\d+GB)\s*.*", lambda m: f"Memory: {selected_ram}", line, flags=re.IGNORECASE)
+                        line = re.sub(r"(Mémoire:\s*\d+GB)\s*.*", lambda m: f"Mémoire: {selected_ram}", line, flags=re.IGNORECASE)
+                    elif brand == "dell":
+                        line = re.sub(r"\d+GB Memory",  lambda m: f"{selected_ram} Memory", line, flags=re.IGNORECASE)
+            if brand == "msi":
+                    line = re.sub(r"(DDR[45]) \d+GB(?:\(\d+GB\*\d+\))?",  lambda m: f"{selected_ram} RAM", line, flags=re.IGNORECASE)
 
-    # Create an image in memory
-    image = Image.new("RGB", (config['width'], config['height']), "white")
-    draw = ImageDraw.Draw(image)
+            # Draw text and calculate height using textbbox
+            draw.text((x, y), line, fill="black", font=font)
+            _, _, _, text_height = draw.textbbox((0, 0), line, font=font)  # Get the height of the text
+            y += text_height + line_spacing  # Move to the next line
 
-    # Load fonts
-    try:
-        bold_font = ImageFont.truetype("arialbd.ttf", math.floor(config['font_size'] * (config['dpi'] // 108)))
-        regular_font = ImageFont.truetype("arial.ttf", math.floor(config['font_size'] * (config['dpi'] // 108)))
-    except IOError:
-        bold_font = regular_font = ImageFont.load_default()
+        # Save the image to a static file
+        img_name = f"generated_image_{idx}.png"
+        img_path = os.path.join(BASE_DIR, 'static', img_name)
+        image.save(img_path, format="PNG")
+        image_urls.append(f"/static/{img_name}")
 
-    # Define text properties
-    lines = content.splitlines()
-    x, y = 30, 30  # Starting position
-    line_spacing = 10  # Additional space between lines
-
-    for line in lines:
-        # Bold and larger for specific headings
-        if line.strip() in ["Performance", "Software"]:
-            font = bold_font
-        else:
-            font = regular_font
-
-        # Draw text and calculate height using textbbox
-        draw.text((x, y), line, fill="black", font=font)
-        _, _, _, text_height = draw.textbbox((0, 0), line, font=font)  # Get the height of the text
-        y += text_height + line_spacing  # Move to the next line
-
-    # Save the image in memory
-    img_buffer = BytesIO()
-    image.save(img_buffer, format="PNG")
-    img_buffer.seek(0)
-
-    # Save the image to the static folder to display in HTML
-    img_path = os.path.join(BASE_DIR, 'static', 'generated_image.png')
-    image.save(img_path, format="PNG")
-
-    # Serve the generated image in the HTML
-    img_url = "/static/generated_image.png"
-    return render_template("display_image.html", image_url=img_url)
+    # Serve the list of generated images in the HTML
+    return render_template("display_image.html", image_urls=image_urls)
 
 
 @app.route('/static/<filename>')
