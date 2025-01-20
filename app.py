@@ -20,7 +20,7 @@ IMAGE_CONFIGS = {
         'width': 1100,
         'height': 480,
         'dpi': 600,
-        'font_size': 6
+        'font_size': 6.5
     },
     'dell': {
         'width': 1100,
@@ -54,12 +54,7 @@ RAM_value = [
 
 @app.route('/')
 def index():
-    ssd_values = SSD_value  # SSD options
-    ram_values = RAM_value  # RAM options
-    text_files = [f for f in os.listdir(DATA_FOLDER) if f.endswith('.txt')]
-    merged_names = list(set(re.sub(r'(_\d+)', '', name) for name in text_files))
-    merged_names.sort()
-    return render_template('index.html', ssd_values=ssd_values, ram_values=ram_values, text_files=merged_names)
+    return render_template('index.html')
 
 
 @app.route('/generate-image', methods=['POST'])
@@ -108,12 +103,16 @@ def generate_image():
 
         # Draw content onto the image
         lines = content.splitlines()
-        x, y = 30, 30
+        x, y = 30, 50
         line_spacing = 10
 
         for line in lines:
             # Bold and larger for specific headings
-            font = bold_font if line.strip() in ["Performance", "Software"] else regular_font
+            if brand == "dell":
+                font = bold_font if line.strip() in ["Performance", "Software"] else regular_font
+            else:
+                font = bold_font
+                
 
             if re.search(r'\b(SSD|Storage|STORAGE)\b', line, re.IGNORECASE):
                     if brand in ["msi", "dell"]:
@@ -161,7 +160,5 @@ def serve_image(filename):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=8080, ssl_context=("cert.pem", "key.pem"))
-    # serve(app, host="0.0.0.0", port=8080)
-
-#flask run --host 0.0.0.0 --port 8080 --cert adhoc
+    app.run(host='0.0.0.0',port=8080, ssl_context=("cert.pem", "key.pem")) #For server
+    # app.run(debug=True) # For testing 
