@@ -162,5 +162,6 @@ def serve_image(filename):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=8080, ssl_context=("cert.pem", "key.pem"))
+    # serve(app, host="0.0.0.0", port=8080)
 
 #flask run --host 0.0.0.0 --port 8080 --cert adhoc
