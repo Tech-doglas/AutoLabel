@@ -4,8 +4,11 @@ from io import BytesIO
 from PIL import Image, ImageDraw, ImageFont
 import math
 import re
+from flask_cors import CORS  # Import the CORS function
+
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
 # Define the base directory and the path to the data folder
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -65,10 +68,12 @@ def generate_image():
     selected_ssd = request.form.get('ssd')
     selected_ram = request.form.get('ram')
 
+    print(selected_text_files)
+
     base_name = re.sub(r'(_\d+)?\.txt$', '', selected_text_files)  # Remove suffix like _1 or _2
     related_files = [
         f for f in os.listdir(DATA_FOLDER)
-        if re.match(rf'{re.escape(base_name)}(_\d+)?\.txt$', f)
+        if re.match(rf'{re.escape(base_name)}(_\d+)?\.txt$', f, re.IGNORECASE)
     ]
 
     if not related_files:
@@ -145,7 +150,9 @@ def generate_image():
         image_urls.append(f"/static/{img_name}")
 
     # Serve the list of generated images in the HTML
-    return render_template("display_image.html", image_urls=image_urls)
+    # return render_template("display_image.html", image_urls=image_urls)
+    return {"image_urls": image_urls}
+
 
 
 @app.route('/static/<filename>')
@@ -154,4 +161,6 @@ def serve_image(filename):
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host='0.0.0.0',port=8080, ssl_context=("cert.pem", "key.pem"))
+
+#flask run --host 0.0.0.0 --port 8080 --cert adhoc
