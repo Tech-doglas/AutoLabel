@@ -1,0 +1,7 @@
+• AMD Ryzen 5 7530U APU [1]
+• 1TB Solid State Drive [3]
+• No Optical Drive
+• Window 11 [67]
+• Touchscreen, Multi-touch enabled
+• 3-cell, 51Wh [63]
+• 12GB SODIMM DDR4 SDRAM

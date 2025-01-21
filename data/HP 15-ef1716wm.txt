@@ -1,0 +1,7 @@
+HP Laptop
+15-ef1716wm
+
+• AMD Ryzen 3 3250U APU [1]
+• 256GB Solid State Drive [3]
+• 4GB SODIMM DDR4 SDRAM
+• No Optical Drive

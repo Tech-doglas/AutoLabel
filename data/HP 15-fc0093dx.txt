@@ -1,0 +1,7 @@
+HP Laptop
+15-fc0093dx
+
+• Intel® Processor N200 [2]
+• 1TB UFS
+• 16GB SODIMM DDR4 SDRAM
+• No Optical Drive

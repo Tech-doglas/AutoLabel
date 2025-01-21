@@ -1,0 +1,7 @@
+HP Laptop
+14-cf2723wm
+
+• Intel® Celeron® Processor N4120 [2]
+• 64GB Solid State Drive
+• 4GB SODIMM DDR4 SDRAM
+• No Optical Drive

@@ -1,0 +1,7 @@
+HP Laptop
+15-fc0093dx
+
+• AMD Ryzen 5 7520U APU [1]
+• 512GB Solid State Drive [3]
+• 16GB on-board LPDDR5 SDRAM
+• No Optical Drive

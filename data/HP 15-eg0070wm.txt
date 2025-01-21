@@ -1,0 +1,8 @@
+HP Laptop
+15-eg0070wm
+
+• Intel Core i7-1165G7 Processor [2]
+• 1TB Solid State Drive [3]
+• 32GB SODIMM DDR4 SDRAM
+• No Optical Drive
+• Windows 10 [67]

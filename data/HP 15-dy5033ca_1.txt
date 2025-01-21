@@ -1,0 +1,7 @@
+HP Laptop
+15-dy5033ca
+
+• Intel® Core™ i3-1215U Processor [2]
+• 1TB Solid State Drive [3]
+• 16GB SODIMM DDR4 SDRAM
+• No Optical Drive

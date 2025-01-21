@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, request, send_file
+import io
 from io import BytesIO
 from PIL import Image, ImageDraw, ImageFont
 import math
@@ -17,18 +18,17 @@ DATA_FOLDER = os.path.join(BASE_DIR, 'data')
 # Image configurations for different models
 IMAGE_CONFIGS = {
     'default': {
-        'width': 1100,
-        'height': 480,
-        'dpi': 600,
         'font_size': 6.5
     },
     'dell': {
-        'width': 1100,
-        'height': 480,
-        'dpi': 600,
         'font_size': 14
+    },
+    'hp': {
+        'font_size': 6.5,
     }
 }
+
+HP_keywords = ["HP Laptop", "Victus by HP Gaming Laptop"]
 
 SSD_value = [
     "128GB",
@@ -54,7 +54,7 @@ RAM_value = [
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html')    
 
 
 @app.route('/generate-image', methods=['POST'])
@@ -87,17 +87,18 @@ def generate_image():
 
         # Determine brand and configuration
         brand = selected_text_files.split()[0].lower()
-        formatConfigs = brand if brand == "dell" else "default"
+        formatConfigs = brand if brand in ["dell", "hp"] else "default"
         config = IMAGE_CONFIGS[formatConfigs]
 
         # Create an image in memory
-        image = Image.new("RGB", (config['width'], config['height']), "white")
+        image = Image.new("RGB", (1100, 480), "white")
         draw = ImageDraw.Draw(image)
 
         # Load fonts
         try:
-            bold_font = ImageFont.truetype("arialbd.ttf", math.floor(config['font_size'] * (config['dpi'] // 108)))
-            regular_font = ImageFont.truetype("arial.ttf", math.floor(config['font_size'] * (config['dpi'] // 108)))
+            bold_font = ImageFont.truetype("arialbd.ttf", math.floor(config['font_size'] * (600 // 108)))
+            regular_font = ImageFont.truetype("arial.ttf", math.floor(config['font_size'] * (600 // 108)))
+            title_font = ImageFont.truetype("arialbd.ttf", math.floor( 10.5 * (600 // 108)))
         except IOError:
             bold_font = regular_font = ImageFont.load_default()
 
@@ -106,14 +107,19 @@ def generate_image():
         x, y = 30, 50
         line_spacing = 10
 
-        for line in lines:
+        for i, line in enumerate(lines):
             # Bold and larger for specific headings
             if brand == "dell":
                 font = bold_font if line.strip() in ["Performance", "Software"] else regular_font
+            elif brand == "hp":
+                # Check if the current line contains "HP Laptop" or "Victus by HP Gaming Laptop"
+                if any(keyword in line for keyword in HP_keywords):
+                    font = title_font
+                else:
+                    font = regular_font
             else:
                 font = bold_font
                 
-
             if re.search(r'\b(SSD|Storage|STORAGE)\b', line, re.IGNORECASE):
                     if brand in ["msi", "dell"]:
                         line = re.sub(r"(\d+(?:GB|TB) SSD)", lambda m: f"{selected_ssd} SSD", line, flags=re.IGNORECASE)

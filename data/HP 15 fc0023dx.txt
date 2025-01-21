@@ -1,0 +1,7 @@
+HP Laptop
+15-fc0023dx
+
+• Intel Core i3-1215U Processor [2]
+• 1TB Solid State Drive [3]
+• 16GB SODIMM DDR4 SDRAM
+• Windows 11 Home in S Mode [68]

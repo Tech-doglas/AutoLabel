@@ -1,0 +1,7 @@
+HP Laptop
+15s-fq0008nia
+
+• Intel® Celeron® Processor N4120 [2]
+• 256GB Solid State Drive [3]
+• 8GB SODIMM DDR4 SDRAM
+• FreeDOS

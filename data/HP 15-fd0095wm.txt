@@ -1,0 +1,8 @@
+HP Laptop
+15-fd0095wm
+
+• Intel® Core i5-1235U Processor [2]
+• 256GB Solid State Drive
+• 16GB SODIMM DDR4 SDRAM
+• Window
+• 15.6" FHD IPS LED Display (300nits)

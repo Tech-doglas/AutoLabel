@@ -1,0 +1,8 @@
+HP Laptop
+17-cp0012nr
+
+• AMD Ryzen™ 5 5500U APU [1]
+• 16GB Solid State Drive [3]
+• 1TB SODIMM DDR4 SDRAM
+• Windows 11 [67]
+• 17.3" FHD IPS LED Display (250 nits) [4]
