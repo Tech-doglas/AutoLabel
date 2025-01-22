@@ -14,6 +14,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_FOLDER = os.path.join(BASE_DIR, 'data')
 HP_SPECIAL_MODEL = os.path.join(BASE_DIR, r'data\HP_special\model.txt')
 HP_Template = os.path.join(BASE_DIR, r'data\HP_special\HP Template.txt')
+TEMPLATE_FOLDER = os.path.join(BASE_DIR, r'data\Template')
 
 # Image configurations for different models
 IMAGE_CONFIGS = {
@@ -30,7 +31,9 @@ IMAGE_CONFIGS = {
 
 @app.route('/')
 def index():
-    return render_template('index.html')    
+    # for f in os.listdir(TEMPLATE_FOLDER):
+    file_list = os.listdir(TEMPLATE_FOLDER)
+    return render_template('index.html', files=file_list)
 
 
 @app.route('/generate-image', methods=['POST'])

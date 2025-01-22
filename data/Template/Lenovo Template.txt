@@ -1,0 +1,8 @@
+CPU: Intel i7-1255U 1.7GHz
+Ram: [RAM]
+Storage: [SSD] SSD
+GPU: Integrated
+Display: 15.6" FHD
+Battery: 3CELL
+OS: Windows 11 Pro
+

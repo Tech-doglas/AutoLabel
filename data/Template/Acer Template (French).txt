@@ -1,0 +1,10 @@
+Système d'exploitation: Windows 11 Home
+Processeur: Intel® Core™ i5-12450H
+ACL: 15.6" FHD IPS 144Hz SlimBezel
+Graphiques: NVIDIA® GeForce RTX™ 3050 with 
+4GB GDDR6 Dedicated VRAM
+Mémoire: [RAM] DDR4 3200MHz Memory
+Stockage: [SSD] PCle NVMe SED SSD
+Lecteur optique: NA
+Réseau sans-fil/ Bluetooth: 802.11 AX+BT
+Réseaux étendus sans-fil: NA

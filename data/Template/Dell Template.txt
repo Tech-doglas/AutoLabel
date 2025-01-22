@@ -1,0 +1,5 @@
+[bold]Performance
+Intel Core i5 Processor
+[RAM] Memory
+[SSD] SSD
+[bold]Software

@@ -1,0 +1,7 @@
+[bold]HP Laptop
+[bold]14-dq0052dx
+
+• Intel® Celeron® Processor N4120 [2]
+• [SSD] Solid State Drive
+• [RAM] SODIMM DDR4 SDRAM
+• No Optical Drive

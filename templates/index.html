@@ -9,6 +9,18 @@
 
 <body>
   <h1>upload the label</h1>
+  <select name="laptop" id="model-select">
+    <option value="">--Please choose an option--</option>
+    <option value="HP">HP</option>
+    <option value="Asus">Asus</option>
+    <option value="Acer">Acer</option>
+    <option value="MSI">MSI</option>
+    <option value="Lenovo">Lenovo</option>
+    <option value="Dell">Dell</option>
+  </select>
+  {% for file in files %}
+  <li>{{ file }}</li>
+  {% endfor %}
 </body>
 
 </html>
