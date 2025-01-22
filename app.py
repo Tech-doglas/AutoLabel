@@ -136,8 +136,13 @@ def generate_image():
         with open(HP_Template, 'r') as file:
             HP_content = file.read()
             lines = HP_content.splitlines()
-            for line in lines:
-                print(line)
+            for HP_line in lines:
+                match = re.search(r"\[(\w+)\]", HP_line)
+
+                if match and match.group(1) == "SSD":
+                    HP_line = re.sub(r"\[SSD\]", selected_ssd, HP_line)
+                elif match and match.group(1) == "RAM":
+                    HP_line = re.sub(r"\[RAM\]", selected_ram, HP_line)
 
     
     # Serve the list of generated images in the HTML
