@@ -45,6 +45,8 @@ def generate_image():
 
     brand = selected_text_files.split()[0].lower()
 
+    width, height = 1100 , 480
+
     special_HP_flag = False
 
     if brand == 'hp':
@@ -80,7 +82,6 @@ def generate_image():
         config = IMAGE_CONFIGS[formatConfigs]
 
         # Create an image in memory
-        width, height = 1100 , 480
         image = Image.new("RGB", (width, height), "white")
         draw = ImageDraw.Draw(image)
 
@@ -133,7 +134,18 @@ def generate_image():
         image_urls.append(f"/static/{img_name}")
 
     if special_HP_flag:
+        x,y = 30, 150
+        try:
+            title_font = ImageFont.truetype("arialbd.ttf", math.floor(20 * (600 // 108)))
+            content_font = ImageFont.truetype("arial.ttf", math.floor(9 * (600 // 108)))
+        except IOError:
+            bold_font = regular_font = ImageFont.load_default()
+
         with open(HP_Template, 'r') as file:
+
+            image1 = Image.new("RGB", (width, height), "white")
+            draw_special = ImageDraw.Draw(image1)
+
             HP_content = file.read()
             lines = HP_content.splitlines()
             for HP_line in lines:
@@ -141,8 +153,27 @@ def generate_image():
 
                 if match and match.group(1) == "SSD":
                     HP_line = re.sub(r"\[SSD\]", selected_ssd, HP_line)
+                    font = title_font
                 elif match and match.group(1) == "RAM":
                     HP_line = re.sub(r"\[RAM\]", selected_ram, HP_line)
+                    font = title_font
+                elif match and match.group(1) == "BR":
+                    HP_line = re.sub(r"\[BR\]", "", HP_line)
+                    x = 600
+                    y = 150
+                else:
+                    font = content_font
+            
+                # Draw text and calculate height using textbbox
+                draw_special.text((x, y), HP_line, fill="black", font=font)
+                _, _, _, text_height = draw_special.textbbox((0, 0), HP_line, font=font)  # Get the height of the text
+                y += text_height + line_spacing  # Move to the next line
+
+        # Save the image to a static file
+        img_name = f"generated_special.png"
+        img_path = os.path.join(BASE_DIR, 'static', img_name)
+        image1.save(img_path, format="PNG")
+        image_urls.append(f"/static/{img_name}")
 
     
     # Serve the list of generated images in the HTML
