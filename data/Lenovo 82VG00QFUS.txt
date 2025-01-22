@@ -1,6 +1,6 @@
 CPU: AMD RYZEN 5 7520HS 2.8G
-Ram: 16GB
-Storage: 1TB SSD
+Ram: [RAM]
+Storage: [SSD] SSD
 GPU: INTEGRATED
 Display: 15.6" FHD
 Battery: 3CELL

@@ -3,8 +3,8 @@ Processor: Intel® Core™ i7-12700H
 LCD: 15.6" FHD IPS 165Hz SlimBezel
 Graphics: NVIDIA® GeForce RTX™ 3070i 
 with 8GB DDR6 Dedicated VRAM
-Memory: 32GB DDR5 Memory
-Storage: 1TB SSD
+Memory: [RAM] DDR5 Memory
+Storage: [SSD] SSD
 Optical Drive: NA
 WLAN/ Bluetooth: WIFI6E+BT
 WWAN: NA

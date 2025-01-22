@@ -1,6 +1,6 @@
 CPU: Intel Core i9-14900HX
-RAM: 32GB
-Storage: 2TB SSD
+RAM: [RAM]
+Storage: [SSD] SSD
 GPU: RTX4080
 Display: 16.0" WQXGA
 Battery: 4CELL

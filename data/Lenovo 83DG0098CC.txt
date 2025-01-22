@@ -1,6 +1,6 @@
 CPU: Intel i7-14650HX 2.2GHz
-Ram: 32GB
-Storage: 1TB SSD
+Ram: [RAM]
+Storage: [SSD] SSD
 GPU: RTX4070
 Display: 16.0" WQXGA
 Battery: 4CELL

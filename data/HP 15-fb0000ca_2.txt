@@ -1,6 +1,6 @@
-Victus by HP Gaming Laptop 
-15-fb0000ca
+[bold]Victus by HP Gaming Laptop 
+[bold]15-fb0000ca
 
 • AMD Ryzen TM 5 5600H APU [1]
-• Module SSD de 2 To [3]
-• 16 Go de SDRAM DDR4 SODIMM
+• Module SSD de [SSD] [3]
+• [RAM] de SDRAM DDR4 SODIMM

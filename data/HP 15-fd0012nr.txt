@@ -1,8 +1,8 @@
-HP Laptop
-15-fd0012nr
+[bold]HP Laptop
+[bold]15-fd0012nr
 
 • Intel Core™ i5-1334U Processor [2]
-• 512GB Solid State Drive [3]
-• 16GB SODIMM DDR4 SDRAM
+• [SSD] Solid State Drive [3]
+• [RAM] SODIMM DDR4 SDRAM
 • Windows 11 [67]
 • 15.6" HD LED Display (250 nits) [4]

@@ -1,7 +1,7 @@
-HP Laptop
-17-cn3034wm
+[bold]HP Laptop
+[bold]17-cn3034wm
 
 • Intel® Core™ i3-N305 Processor [2]
-• 256GB Solid State Drive [3]
-• 16GB SODIMM DDR4 SDRAM
+• [SSD] Solid State Drive [3]
+• [RAM] SODIMM DDR4 SDRAM
 • No Optical Drive

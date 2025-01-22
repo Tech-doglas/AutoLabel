@@ -1,6 +1,6 @@
 CPU: Intel i5-1155G7 2.5GHz
-Ram: 12GB
-Storage: 512GB SSD
+Ram: [RAM]
+Storage: [SSD] SSD
 GPU: Integrated 
 Display: 14.0" FHD
 Battery: 3CELL

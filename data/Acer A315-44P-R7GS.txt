@@ -2,8 +2,8 @@ OS: Windows 11 Home
 Processor: AMD Ryzen 7 5700U
 LCD: 15.6" FHD Acer ComfyView LED LCD
 Graphics: AMD Radeon Graphics
-Memory: 16GB DDR4 Memory
-Storage: 1TB PCle NVMe SSD
+Memory: [RAM] DDR4 Memory
+Storage: [SSD] PCle NVMe SSD
 Optical Drive: NA
 WLAN/ Bluetooth: 2x2 AX+BT
 WWAN: NA

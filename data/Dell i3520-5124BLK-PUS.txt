@@ -1,5 +1,5 @@
-Performance
+[bold]Performance
 Intel Core i5 Processor
-8GB Memory
-1TB SSD
-Software
+[RAM] Memory
+[SSD] SSD
+[bold]Software

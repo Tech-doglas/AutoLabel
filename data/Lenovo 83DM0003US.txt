@@ -1,6 +1,6 @@
 CPU: Ryzen 7 8840HS AMD Radeon
-Ram: 16GB
-Storage: 2TB SSD
+Ram: [RAM]
+Storage: [SSD] SSD
 GPU: INTERGRATED
 Display: 16" WUXGA TS
 Battery: 4CELL

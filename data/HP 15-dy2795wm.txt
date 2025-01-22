@@ -1,7 +1,7 @@
-HP Laptop
-15-dy2795wm
+[bold]HP Laptop
+[bold]15-dy2795wm
 
 • Intel Core i5-1135G7 Processor
-• 1TB Solid State Drive
-• 8GB SODIMM DDR4 SDRAM
+• [SSD] Solid State Drive
+• [RAM] SODIMM DDR4 SDRAM
 • No Optical Drive

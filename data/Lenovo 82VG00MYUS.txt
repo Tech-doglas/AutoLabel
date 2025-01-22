@@ -1,6 +1,6 @@
 CPU: AMD RYZEN 5 7520U 2 2.8GHz
-Ram: 8GB
-Storage: 1TB SSD
+Ram: [RAM]
+Storage: [SSD] SSD
 GPU: Integrated
 Display: 15.6" FHD TS
 Battery: 3CELL

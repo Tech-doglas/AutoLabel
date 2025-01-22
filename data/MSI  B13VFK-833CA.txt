@@ -2,8 +2,8 @@ Black
 15.6", FHD, Anti-Glare, IPS-level, 144hz
 Intel Core i7-13620H Processor
 GeForce RTX4070/8GB GDDR6
-1TB SSD
-DDR4 32GB(16GB*2)
+[SSD] SSD
+DDR4 [RAM]
 WLAN+BT combo module
 Windows 11 64bit Home
 US-International

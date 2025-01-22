@@ -1,6 +1,7 @@
 • Intel® Core™ i9-13900HX Processor [2]
-• 1TB Solid State Drive [3]
+• [SSD] Solid State Drive [3]
 • Windows 11 [67]
 • 6-cell, 83 Wh [63]
-• 32GB SODIMM DDR5 SDRAM
-• 16.1" FHD IPS LED Display (300 nits, 165Hz, G-sync) [4]
+• [RAM] SODIMM DDR5 SDRAM
+• 16.1" FHD IPS LED Display 
+    (300 nits, 165Hz, G-sync) [4]

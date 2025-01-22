@@ -2,8 +2,8 @@ Cosmos_Gray
 15.6", FHD, Anti-Glare, IPS-level, 144hz
 Intel Core i5-12450H Processor
 GeForce RTX4060/8GB GDDR6
-1TB SSD
-DDR4 32GB(16GB*2)
+[SSD] SSD
+DDR4 [RAM]
 WLAN+BT combo module
 Windows 11 64bit Home
 US-International

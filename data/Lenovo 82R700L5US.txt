@@ -1,6 +1,6 @@
 CPU: Intel i5-1235U 1.3GHz
-Ram: 8GB
-Storage: 1TB SSD
+Ram: [RAM]
+Storage: [SSD] SSD
 GPU: INTERGRATED
 Display: 14.0" WUXGA TS
 Battery: 3CELL

@@ -1,7 +1,7 @@
-HP Laptop
-14-es0013dx
+[bold]HP Laptop
+[bold]14-es0013dx
 
 • Intel® Core™ i5-1335U Processor  [2]
-• 1TB Solid State Drive [3]
-• 8GB on-board LPDDR5 SDRAM
+• [RAM] Solid State Drive [3]
+• [SSD] on-board LPDDR5 SDRAM
 • No Optical Drive

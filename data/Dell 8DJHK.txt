@@ -1,5 +1,5 @@
-Performance
+[bold]Performance
 Intel Core i7 Processor
-16GB Memory
-512GB SSD
-Software
+[RAM] Memory
+[SSD] SSD
+[bold]Software

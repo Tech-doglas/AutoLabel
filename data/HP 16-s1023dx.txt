@@ -1,8 +1,8 @@
 • AMD Ryzen™ 7 8845HS APU [1]
-• 1TB Solid State Drive [3]
+• [SSD] Solid State Drive [3]
 • Windows 11 [67]
 • 4-cell, 70 Wh [63]
-• 32GB SODIMM DDR5 SDRAM
+• [RAM] SODIMM DDR5 SDRAM
 • 16.1"FHD IPS LED Display
    300 nits, 144[Hz] [4]
 • Hyper X

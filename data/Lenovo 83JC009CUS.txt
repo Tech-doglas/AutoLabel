@@ -1,6 +1,6 @@
 CPU: AMD RYZEN 7 7435HS 3.1GHz
-Ram: 32GB
-Storage: 1TB SSD
+Ram: [RAM]
+Storage: [SSD] SSD
 GPU: RTX4070
 Display: 15.6" FHD
 Battery: 4CELL

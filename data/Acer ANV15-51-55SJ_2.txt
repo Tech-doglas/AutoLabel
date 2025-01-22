@@ -2,8 +2,8 @@ Système d'exploitation: Windows 11 Home
 Processeur: Intel® Core™ i5-13420H
 ACL: 15.6" FHD IPS 144Hz SlimBezel
 Graphiques: NVIDIA® GeForce RTX™ 2050 with 4GB DDR6
-Mémoire: 16GB DDR4 Memory
-Stockage: 512GB PCle NVMe SSD
+Mémoire: [RAM] DDR4 Memory
+Stockage: [SSD] PCle NVMe SSD
 Lecteur optique: NA
 Réseau sans-fil/ Bluetooth: 2x2 AX+BT
 Réseaux étendus sans-fil: NA

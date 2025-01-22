@@ -1,6 +1,6 @@
 CPU: AMD RYZEN 5 764HS 4.3G
-Storage: 512GB SSD
-Ram: 16GB
+Storage: [SSD] SSD
+Ram: [RAM]
 GPU: RTX4050
 Display: 16.0" WUXGA
 Battery: 4CELL

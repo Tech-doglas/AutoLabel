@@ -1,5 +1,5 @@
-8GB
+[RAM]
 Memory
 
-64GB
+[SSD]
 Solid State Drive

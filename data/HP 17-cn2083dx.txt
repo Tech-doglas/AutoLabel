@@ -1,8 +1,8 @@
-HP Laptop
-17-cn2083dx
+[bold]HP Laptop
+[bold]17-cn2083dx
 
 • Intel® Core™ i3-1215U Processor [2]
-• 1TB Solid State Drive [3]
-• 16GB SODIMM DDR4 SDRAM
+• [SSD] Solid State Drive [3]
+• [RAM] SODIMM DDR4 SDRAM
 Windows 11 Home in S More [68]
 17.3" FHD IPS LED Display (300 nits) [4]

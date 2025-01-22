@@ -1,6 +1,6 @@
-HP Laptop
-HP 250 G9
+[bold]HP Laptop
+[bold]HP 250 G9
 
 • Intel® Core™ i5-1235U Processor
-• 512GB Solid State Drive
-• 16GB SODIMM DDR4 SDRAM
+• [SSD] Solid State Drive
+• [RAM] SODIMM DDR4 SDRAM

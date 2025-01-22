@@ -1,7 +1,7 @@
-HP Laptop
-14-dq0051dx
+[bold]HP Laptop
+[bold]14-dq0051dx
 
 • Intel® Celeron® Processor N4120 [2]
-• 64GB Solid State Drive
-• 8GB SODIMM DDR4 SDRAM
+• [SSD] Solid State Drive
+• [RAM] SODIMM DDR4 SDRAM
 • No Optical Drive

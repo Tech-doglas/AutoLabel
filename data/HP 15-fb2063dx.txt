@@ -1,7 +1,7 @@
-Victus by HP Gaming Laptop
-15-fb2063dx
+[bold]Victus by HP Gaming Laptop
+[bold]15-fb2063dx
 
 • AMD Ryzen™ 5 7535HS APU [1]
-• 512GB Solid State Drive [3]
-• 8GB SODIMM DDR5 SDRAM
+• [SSD] Solid State Drive [3]
+• [RAM] SODIMM DDR5 SDRAM
 • Windows 11 [67]

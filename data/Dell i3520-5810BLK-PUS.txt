@@ -1,6 +1,6 @@
-Performance
+[bold]Performance
 Intel Core i5 Processor
-32GB Memory
-1TB SSD
-Software
+[RAM] Memory
+[SSD] SSD
+[bold]Software
 Windows 11 Pro

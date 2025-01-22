@@ -2,8 +2,8 @@ OS: Windows 11 Home
 Processor: Intel® Core™ i7-1165G7
 LCD: 15.6" FHD Acer ComfyView LED LCD
 Graphics: Intel® Iris® Xe Graphics
-Memory: 16GB DDR4 Memory
-Storage: 512GB PCle NVMe SSD
+Memory: [RAM] DDR4 Memory
+Storage: [SSD] PCle NVMe SSD
 Optical Drive: NA
 WLAN/ Bluetooth: WIFI6+BT
 WWAN: NA

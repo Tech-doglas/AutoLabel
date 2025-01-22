@@ -1,7 +1,7 @@
-HP Laptop
-14-cf2112wm
+[bold]HP Laptop
+[bold]14-cf2112wm
 
 • Intel® Celeron® Processor N4120 [2]
-• 64GB Solid State Drive
-• 8GB SODIMM DDR4 SDRAM
+• [SSD] Solid State Drive
+• [RAM] SODIMM DDR4 SDRAM
 • No Optical Drive

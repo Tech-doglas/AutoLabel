@@ -2,8 +2,8 @@ OS: Windows 11 Home
 Processor: AMD Ryzen 5 7320U
 LCD: 15.6" FHD ComfyView IPS Multi-Touch LCD
 Graphics: AMD Radeon Graphics
-Memory: 8GB LPDDR5 Memory
-Storage: 1TB PCle NVMe SSD
+Memory: [RAM] LPDDR5 Memory
+Storage: [SSD] PCle NVMe SSD
 Optical Drive: NA
 WLAN/ Bluetooth: WIFI6+BT
 WWAN: NA

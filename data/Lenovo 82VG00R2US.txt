@@ -1,6 +1,6 @@
 CPU: AMD RYZEN 3 7320U 2.4G
-Ram: 4GB
-Storage: 1TB SSD
+Ram: [RAM]
+Storage: [SSD] SSD
 GPU: INTERGRATED
 Display: 15.6" FHD
 Battery: 3CELL

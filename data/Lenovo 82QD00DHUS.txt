@@ -1,6 +1,6 @@
 CPU: Intel i3-1215u 1.2GHz
-Ram: 8GB
-Storage: 1TB SSD
+Ram: [RAM]
+Storage: [SSD] SSD
 GPU: INTEGRATED
 Display: 15.6" FHD TS
 Battery: 3CELL

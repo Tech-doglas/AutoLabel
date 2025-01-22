@@ -1,7 +1,7 @@
 • Intel Core Ultra 5 125U  [2]
-• 1TB Solid State Drive [3]
+• [SSD] Solid State Drive [3]
 • No Optical Drive
 • Window 11 [67]
 • Touchscreen, Multi-touch enabled
 • 4-cell, 68Wh [63]
-• 16GB LDDR5 SDRAM
+• [RAM] LDDR5 SDRAM
