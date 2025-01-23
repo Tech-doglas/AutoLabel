@@ -1,0 +1,7 @@
+CPU: Intel i5-1235u 1.3GHz
+Ram: [RAM]
+Storage: [SSD] SSD
+GPU: INTEGRATED
+Display: 15.6" FHD TS
+Battery: 3CELL
+OS: Windows 11 Home in S mode

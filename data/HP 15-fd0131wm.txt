@@ -1,0 +1,7 @@
+[bold]HP Laptop
+[bold]15-fd0131wm
+
+• Intel® Core i3-N305 Processor [2]
+• [SSD] Solid State Drive [3]
+• [RAM] SODIMM DDR4 SDRAM
+• Window 11 [67]

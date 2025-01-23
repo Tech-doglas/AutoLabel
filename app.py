@@ -31,9 +31,19 @@ IMAGE_CONFIGS = {
 
 @app.route('/')
 def index():
-    # for f in os.listdir(TEMPLATE_FOLDER):
     file_list = os.listdir(TEMPLATE_FOLDER)
-    return render_template('index.html', files=file_list)
+    file_contents = []
+
+    for file in file_list:
+        file_path = os.path.join(TEMPLATE_FOLDER, file)
+        # Ensure it's a file before reading (not a directory)
+        if os.path.isfile(file_path):
+            with open(file_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+                file_contents.append({'name': file, 'content': content})
+
+    return render_template('index.html', files=file_contents)
+    # return render_template('index.html', files=file_list)
 
 
 @app.route('/generate-image', methods=['POST'])
