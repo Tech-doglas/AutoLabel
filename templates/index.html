@@ -2,25 +2,214 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Label Upload</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Label Upload</title>
+    <style>
+        .filter-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        select,
+        .laptop-name,
+        button {
+            font-size: 18px;
+            padding: 10px;
+        }
+
+        h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .clickable-h3 {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input[type="checkbox"] {
+            pointer-events: auto;
+        }
+
+        label {
+            cursor: pointer;
+        }
+
+        .file-container {
+            display: block;
+            margin-top: 20px;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 
 <body>
-  <h1>upload the label</h1>
-  <select name="laptop" id="model-select">
-    <option value="">--Please choose an option--</option>
-    <option value="HP">HP</option>
-    <option value="Asus">Asus</option>
-    <option value="Acer">Acer</option>
-    <option value="MSI">MSI</option>
-    <option value="Lenovo">Lenovo</option>
-    <option value="Dell">Dell</option>
-  </select>
-  {% for file in files %}
-  <li>{{ file }}</li>
-  {% endfor %}
+    <div class="center-content">
+        <h1>Upload the Label</h1>
+
+        <div class="filter-container">
+            <!-- Dropdown for selecting laptop model -->
+            <select name="laptop" id="model-select">
+                <option value="">--Please choose an option--</option>
+                <option value="HP">HP</option>
+                <option value="Asus">Asus</option>
+                <option value="Acer">Acer</option>
+                <option value="MSI">MSI</option>
+                <option value="Lenovo">Lenovo</option>
+                <option value="Dell">Dell</option>
+            </select>
+
+            <!-- Text Field for laptop name -->
+            <input type="text" id="laptop-name" placeholder="Laptop Name" class="laptop-name" />
+
+            <!-- Button next to the input field -->
+            <button id="Submit-button">Submit</button>
+        </div>
+
+        <!-- Error Message Display -->
+        <div class="error" id="error-message"></div>
+
+        <div id="image-container">
+            <!-- Loop through files and create dynamic content -->
+            {% for file in files %}
+            <div class="file-container" data-category="{{ file.name }}">
+                <h3 class="clickable-h3">
+                    <input type="checkbox" id="file-checkbox-{{ loop.index }}" name="file-checkbox" />
+                    <label for="file-checkbox-{{ loop.index }}">{{ file.name }}</label>
+                </h3>
+                <textarea class="text-area" rows="15" cols="50">{{ file.content }}</textarea>
+                <canvas class="text-canvas"></canvas>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        // Function to generate images on canvas from text areas
+        function generateImages() {
+            const textareas = document.querySelectorAll('.text-area');
+            const canvases = document.querySelectorAll('.text-canvas');
+
+            textareas.forEach((textarea, index) => {
+                const canvas = canvases[index];
+
+                function drawTextOnCanvas(text) {
+                    const ctx = canvas.getContext('2d');
+                    canvas.width = 400;
+                    canvas.height = 200;
+
+                    // Clear previous content
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.fillStyle = "#ffffff"; // Background color
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                    // Text settings
+                    ctx.font = "20px Arial";
+                    ctx.fillStyle = "#000000"; // Text color
+
+                    // Draw text line by line
+                    const lines = text.split("\n");
+                    let yPosition = 40;
+                    lines.forEach(line => {
+                        ctx.fillText(line, 20, yPosition);
+                        yPosition += 30;
+                    });
+                }
+
+                // Draw initial text
+                drawTextOnCanvas(textarea.value);
+
+                // Update canvas when textarea changes
+                textarea.addEventListener('input', function () {
+                    drawTextOnCanvas(this.value);
+                });
+            });
+        }
+
+        // Run the function after the page loads
+        window.onload = generateImages;
+
+        // Filter files based on the selected model
+        document.getElementById("model-select").addEventListener("change", function () {
+            const selectedValue = this.value.toLowerCase();
+            const fileContainers = document.querySelectorAll(".file-container");
+
+            // Clear the selected checkboxes
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+
+            // Show or hide file containers based on the selected model
+            fileContainers.forEach(container => {
+                if (selectedValue === "" || container.dataset.category.toLowerCase().includes(selectedValue)) {
+                    container.style.display = "block";
+                } else {
+                    container.style.display = "none";
+                }
+            });
+        });
+
+        // Toggle checkbox state when the entire <h3> is clicked
+        document.querySelectorAll('.clickable-h3').forEach(h3 => {
+            h3.addEventListener('click', function () {
+                const checkbox = this.querySelector('input[type="checkbox"]');
+                checkbox.checked = !checkbox.checked; // Toggle checkbox state
+            });
+        });
+
+        // Submit button click event
+        document.getElementById("Submit-button").addEventListener("click", function () {
+            const modelSelect = document.getElementById("model-select");
+            const laptopName = document.getElementById("laptop-name").value.trim();
+            const selectedFile = document.querySelector('input[name="file-checkbox"]:checked');
+            const errorMessage = document.getElementById("error-message");
+
+            // Validation logic
+            if (!modelSelect.value) {
+                errorMessage.textContent = "Please select a laptop brand.";
+            } else if (!laptopName) {
+                errorMessage.textContent = "Please input a laptop name.";
+            } else if (!selectedFile) {
+                errorMessage.textContent = "Please select at least one file.";
+            } else {
+                errorMessage.textContent = ""; // Clear error message
+                // Submit logic here
+                alert("Form submitted successfully!");
+
+                // Clear the form after successful submission
+                modelSelect.value = ""; // Clear model selection
+                document.getElementById("laptop-name").value = ""; // Clear laptop name input
+                document.querySelectorAll('input[name="file-checkbox"]').forEach(checkbox => {
+                    checkbox.checked = false; // Uncheck all checkboxes
+                });
+                // Optionally, you can also hide the file containers or reset the displayed content.
+                const fileContainers = document.querySelectorAll(".file-container");
+                fileContainers.forEach(container => {
+                    container.style.display = "none";
+                });
+            }
+        });
+    </script>
+
 </body>
 
 </html>

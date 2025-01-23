@@ -43,7 +43,6 @@ def index():
                 file_contents.append({'name': file, 'content': content})
 
     return render_template('index.html', files=file_contents)
-    # return render_template('index.html', files=file_list)
 
 
 @app.route('/generate-image', methods=['POST'])
