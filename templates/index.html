@@ -146,7 +146,10 @@
         }
 
         // Run the function after the page loads
-        window.onload = generateImages;
+        window.onload = function () {
+            generateImages();
+            enforceSelectionRules();
+        };
 
         // Filter files based on the selected model
         document.getElementById("model-select").addEventListener("change", function () {
@@ -176,11 +179,29 @@
             });
         });
 
+        // Function to enforce selection rules for HP templates
+        function enforceSelectionRules() {
+            const checkboxes = document.querySelectorAll('input[name="file-checkbox"]');
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function () {
+                    const selectedFiles = Array.from(checkboxes).filter(cb => cb.checked);
+                    const selectedFileNames = selectedFiles.map(cb => cb.nextElementSibling.textContent.trim());
+
+                    // Check if both HP Template_1.txt and HP Template_2.txt are selected
+                    if (selectedFileNames.includes('HP Template_1.txt') && selectedFileNames.includes('HP Template_2.txt')) {
+                        alert("You cannot select both HP Template_1.txt and HP Template_2.txt.");
+                        this.checked = false; // Uncheck the newly selected one
+                    }
+                });
+            });
+        }
+
         // Submit button click event
         document.getElementById("Submit-button").addEventListener("click", function () {
             const modelSelect = document.getElementById("model-select");
             const laptopName = document.getElementById("laptop-name").value.trim();
-            const selectedFile = document.querySelector('input[name="file-checkbox"]:checked');
+            const selectedFiles = document.querySelectorAll('input[name="file-checkbox"]:checked');
             const errorMessage = document.getElementById("error-message");
 
             // Validation logic
@@ -188,26 +209,63 @@
                 errorMessage.textContent = "Please select a laptop brand.";
             } else if (!laptopName) {
                 errorMessage.textContent = "Please input a laptop name.";
-            } else if (!selectedFile) {
+            } else if (selectedFiles.length === 0) {
                 errorMessage.textContent = "Please select at least one file.";
             } else {
                 errorMessage.textContent = ""; // Clear error message
-                // Submit logic here
-                alert("Form submitted successfully!");
 
-                // Clear the form after successful submission
-                modelSelect.value = ""; // Clear model selection
-                document.getElementById("laptop-name").value = ""; // Clear laptop name input
-                document.querySelectorAll('input[name="file-checkbox"]').forEach(checkbox => {
-                    checkbox.checked = false; // Uncheck all checkboxes
+                // Prepare an array to store selected files and content
+                let fileData = [];
+
+                selectedFiles.forEach(fileCheckbox => {
+                    const fileName = fileCheckbox.nextElementSibling.textContent; // Get the file name
+                    const content = fileCheckbox.closest('.file-container').querySelector('.text-area').value; // Get the file content
+
+                    fileData.push({
+                        fileName: fileName,
+                        content: content
+                    });
                 });
-                // Optionally, you can also hide the file containers or reset the displayed content.
-                const fileContainers = document.querySelectorAll(".file-container");
-                fileContainers.forEach(container => {
-                    container.style.display = "none";
-                });
+
+                const data = {
+                    brand: modelSelect.value,
+                    laptopName: laptopName,
+                    selectedFiles: fileData
+                };
+
+                // Send data to backend
+                fetch('/UploadLabel', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                        alert("Form submitted successfully!");
+
+                        // Clear the form after successful submission
+                        modelSelect.value = ""; // Clear model selection
+                        document.getElementById("laptop-name").value = ""; // Clear laptop name input
+                        document.querySelectorAll('input[name="file-checkbox"]').forEach(checkbox => {
+                            checkbox.checked = false; // Uncheck all checkboxes
+                        });
+
+                        // Optionally, you can hide the file containers or reset the displayed content.
+                        const fileContainers = document.querySelectorAll(".file-container");
+                        fileContainers.forEach(container => {
+                            container.style.display = "none";
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert("Error submitting form!");
+                    });
             }
         });
+
     </script>
 
 </body>

@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file, jsonify
 from PIL import Image, ImageDraw, ImageFont
 import math
 import re
@@ -44,6 +44,79 @@ def index():
 
     return render_template('index.html', files=file_contents)
 
+
+@app.route('/UploadLabel', methods=['POST'])
+def UploadLabel():
+    try:
+        data = request.get_json()
+        model_name = data.get('brand')
+        laptop_name = data.get('laptopName')
+        selected_files = data.get('selectedFiles', [])  # Default to empty list if not provided
+
+        print(model_name, laptop_name)
+
+        if not selected_files:
+            return jsonify({"message": "No files selected."}), 400
+
+        for i, file_info in enumerate(selected_files):
+            selected_file = file_info.get('fileName')
+            filtered_files = [
+                file_info for file_info in selected_files if not 
+                re.search(r"_special", file_info.get('fileName'))
+            ]
+            contains_special = any(re.search(r"_special", file_info.get('fileName')) for file_info in selected_files)
+
+            if contains_special:
+                with open(HP_SPECIAL_MODEL, 'r') as file:
+                    lines = file.readlines()
+                
+                lines.append(f"{model_name} {laptop_name}\n") 
+
+                with open(HP_SPECIAL_MODEL, 'w') as file:
+                    file.writelines(lines)
+
+            selected_files = filtered_files
+
+
+        for i, file_info in enumerate(selected_files):
+            selected_file = file_info.get('fileName')
+            content = file_info.get('content')
+
+            if not selected_file or not content:
+                return jsonify({"message": "Invalid file data."}), 400
+
+            # Replace "Template" with laptop_name in the file name
+            file_name = re.sub(r"Template", laptop_name, selected_file).strip()
+
+            file_name = re.sub(r"\s*\(French\)", "", file_name).strip()
+
+            # Extract base file name and extension separately
+            base_name, ext = os.path.splitext(file_name)
+
+            unique_file_name = f"{base_name}{ext}"
+
+            if model_name == "Acer":
+                if (len(selected_files) > 1):
+                # Create a unique filename with numbering
+                    unique_file_name = f"{base_name}_{i + 1}{ext}"
+            elif model_name == "HP":
+                unique_file_name = re.sub(r"_\d+", "", file_name).strip()
+                if "special" in unique_file_name.lower():
+                    unique_file_name = re.sub(r"_special+", "", file_name).strip()
+
+            # Save the file to the data folder
+            file_path = os.path.join(DATA_FOLDER, unique_file_name)
+
+            print(f"Saving file: {unique_file_name}")
+
+            with open(file_path, "w") as f:
+                f.write(content)
+
+        return jsonify({"message": "All files saved successfully!"}), 200
+
+    except Exception as e:
+        print(f"Error: {str(e)}")
+        return jsonify({"message": "Error processing the files."}), 500
 
 @app.route('/generate-image', methods=['POST'])
 def generate_image():
