@@ -67,12 +67,12 @@ def UploadLabel():
             contains_special = any(re.search(r"_special", file_info.get('fileName')) for file_info in selected_files)
 
             if contains_special:
-                with open(HP_SPECIAL_MODEL, 'r') as file:
+                with open(HP_SPECIAL_MODEL, 'r', encoding='utf-8') as file:
                     lines = file.readlines()
                 
                 lines.append(f"{model_name} {laptop_name}\n") 
 
-                with open(HP_SPECIAL_MODEL, 'w') as file:
+                with open(HP_SPECIAL_MODEL, 'w', encoding='utf-8') as file:
                     file.writelines(lines)
 
             selected_files = filtered_files
@@ -109,7 +109,7 @@ def UploadLabel():
 
             print(f"Saving file: {unique_file_name}")
 
-            with open(file_path, "w") as f:
+            with open(file_path, "w", encoding='utf-8') as f:
                 f.write(content)
 
         return jsonify({"message": "All files saved successfully!"}), 200
