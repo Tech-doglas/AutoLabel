@@ -1,7 +1,7 @@
 [bold]Victus by HP Gaming Laptop
 [bold]15-fa0033dx
 
-•Intel Core™ i5-12450H Processor [2]
+• Intel® Core™ i5-12450H Processor [2]
 • [SSD] Solid State Drive [3]
-• [RAM] SODIMM DDR5 SDRAM
+• [RAM] SODIMM DDR4 SDRAM
 • Windows 11 [67]

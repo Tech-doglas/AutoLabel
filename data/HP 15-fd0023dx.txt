@@ -1,7 +1,7 @@
 [bold]HP Laptop
 [bold]15-fd0023dx
 
-• Intel Core i3-1215U Processor [2]
-• [SSD] Solid State Drive [3]
-• [RAM] SODIMM DDR4 SDRAM
-• Windows 11 Home in S Mode [68]
+â€¢ IntelÂ® Coreâ„¢ i3-1215U Processor [2]
+â€¢ [SSD] Solid State Drive [3]
+â€¢ [RAM] SODIMM DDR4 SDRAM
+â€¢ Windows 11 Home in S Mode [68]

@@ -1,0 +1,6 @@
+[bold]Performance
+Intel Core i3 -1215U Processor
+[RAM] Memory
+[SSD] SSD
+Integrated Intel UHD Graphics
+[bold]Software
