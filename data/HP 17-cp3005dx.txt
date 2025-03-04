@@ -1,0 +1,7 @@
+[bold]HP Laptop
+[bold]17-cp3005dx
+
+• AMD Ryzen™ 5 7430U APU [1]
+• [SSD] Solid State Drive [3]
+• [RAM] SODIMM DDR4 SDRAM
+• Windows 11 Home in S Mode[68]

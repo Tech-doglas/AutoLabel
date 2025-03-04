@@ -1,0 +1,7 @@
+[bold]Performance
+AMD Ryzen 5 7520U Processor
+Intel Core i5 Processor
+[RAM] Memory
+[SSD] SSD
+Integrated AMD Graphics
+[bold]Software
